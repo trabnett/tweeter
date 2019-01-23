@@ -32,17 +32,23 @@ $(document).ready(function() {
 //     console.log($(this), 'hello')
 //   })
 
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 var words = tweetData['content']['text']
 function createTweetElement(data) {
-$('.container').append(`
+$('#mainTweetBody').prepend(`
       <section class="tweet">
         <article>
           <header>
-            <img src=${data['user']['avatars']['small']}><p>${data['user']['name']}</p><span>${data['user']['handle']}</span>
+            <img src=${escape(data['user']['avatars']['small'])}><p>${escape(data['user']['name'])}</p><span>${escape(data['user']['handle'])}</span>
           </header>
-            <p>${data['content']['text']}</p>
+            <p>${escape(data['content']['text'])}</p>
           <footer>
-            <p>${data['user']['created_at']}</p>
+            <p>${escape(data['user']['created_at'])}</p>
           </footer>
         </article>
       </section>`)
@@ -79,7 +85,9 @@ function loadTweets () {
   });
 };
 
-
+$("#nav-bar").click(function() {
+  alert( "Handler for .click() called." );
+});
 
 
 

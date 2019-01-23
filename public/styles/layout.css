@@ -23,6 +23,7 @@ main {
   margin-right: auto;
   width: 70%;
   height: 100%;
+  border-top: 300px;
 }
 
 
@@ -35,6 +36,7 @@ body {
  */
 
 body {
+  margin-top: 300px;
   height: 100%;
   margin: 0;
   color: #244751;

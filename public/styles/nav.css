@@ -1,7 +1,9 @@
 #nav-bar {
   position: fixed;
   height: 80px;
-  width: 100%
+  margin: 0;
+  padding: 0;
+  width: 100%;
   background-color: #00a087;
   color: #e8fdff;
   padding: 0px 2em 0px 2em;
@@ -17,13 +19,33 @@
 #nav-bar .header {
   float: left;
   font-size: 2em;
-  position: absolute;
   left-margin: 10px;
   margin-top: auto;
-  margin-bottom:auto;
+  margin-bottom: auto;
   line-height: 5rem;
   top:0px;
   bottom:0px;
+}
+
+#nav-bar .click {
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+#nav-bar .button {
+  float: right;
+  height: 60px;
+  opacity: .6;
+  border-radius: 8px;
+  border: 1px solid black;
+  font-size: 25px;
+  margin-top: 10px;
+  line-height: 55px
+}
+
+#nav-bar .button:hover{
+  opacity: .8;
 }
 
 
