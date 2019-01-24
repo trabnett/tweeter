@@ -48,7 +48,7 @@ $('#mainTweetBody').prepend(`
           </header>
             <p>${escape(data['content']['text'])}</p>
           <footer>
-            <p>${escape(data['user']['created_at'])}</p>
+            <p>${escape(data['created_at'])}</p>
           </footer>
         </article>
       </section>`)
@@ -57,6 +57,8 @@ $('#mainTweetBody').prepend(`
 
 
 $( "form" ).submit(function( event ) {
+  $('.noChar').hide()
+  $('.tooMany').hide()
   event.preventDefault();
   let stringInput = $('form').serialize()
   console.log(stringInput)
@@ -69,24 +71,31 @@ $( "form" ).submit(function( event ) {
       console.log('The call failed')
     })
   } else if (stringInput.length <= 5){
-    alert("please enter some content")
+    $('.noChar').slideToggle(400, function () {
+    $('this, textarea').select()
+    });
   } else {
-    alert("your tweet is too long")
+    $('.tooMany').slideToggle(400, function () {
+    $('this, textarea').select()
+    });
   }
+  $('textarea').val('')
 })
 
 
 function loadTweets () {
+  $('#mainTweetBody').empty()
   $.getJSON("/tweets", function(result){
     $.each(result, function(i, field){
-      console.log(field)
       $("body").prepend(createTweetElement(field));
     });
   });
 };
 
-$("#nav-bar").click(function() {
-  alert( "Handler for .click() called." );
+$("#nav-bar button").on('click', function() {
+  $('.new-tweet').slideToggle(400, function () {
+  $('this, textarea').select()
+  });
 });
 
 

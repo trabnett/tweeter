@@ -10,6 +10,8 @@
   padding-bottom: 30px;
   background-color: lightblue;
   width: 450px;
+  display: none;
+  z-index: 0;
 }
 
 .new-tweet h2 {
@@ -21,6 +23,7 @@
 }
 
 textarea {
+  overflow-wrap: break-word;
   overflow: auto;
   background-color: lightgrey;
   border-radius: 8px;
