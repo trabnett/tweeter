@@ -12,6 +12,8 @@ module.exports = function(DataHelpers) {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
+        let obj = JSON.stringify()
+        console.log("parsed tweets", tweets)
         res.json(tweets);
       }
     });
@@ -22,7 +24,6 @@ module.exports = function(DataHelpers) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
     }
-
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
     const tweet = {
       user: user,
@@ -31,6 +32,7 @@ module.exports = function(DataHelpers) {
       },
       created_at: Date.now()
     };
+    console.log("tweet", tweet)
 
     DataHelpers.saveTweet(tweet, (err) => {
       if (err) {

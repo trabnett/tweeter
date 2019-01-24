@@ -5,22 +5,6 @@
  */
 
 
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": {
-      "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-      "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-      "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-    },
-    "handle": "@SirIsaac"
-  },
-  "content": {
-    "text": "If I have seen further it is by standing on the shoulders of giants"
-  },
-  "created_at": 1461116232227
-}
-
 
 
 $(document).ready(function() {
@@ -38,7 +22,7 @@ function escape(str) {
   return div.innerHTML;
 }
 
-var words = tweetData['content']['text']
+
 function createTweetElement(data) {
 $('#mainTweetBody').prepend(`
       <section class="tweet">
@@ -61,10 +45,10 @@ $( "form" ).submit(function( event ) {
   $('.tooMany').hide()
   event.preventDefault();
   let stringInput = $('form').serialize()
-  console.log(stringInput)
   if (stringInput.length > 5 && stringInput.length <= 145) {
     $.ajax('/tweets', {data: stringInput, method: 'POST' })
     .done((response) => {
+      console.log('posting new tweet from app.js--check')
       loadTweets()
     })
     .fail(() => {
@@ -84,9 +68,11 @@ $( "form" ).submit(function( event ) {
 
 
 function loadTweets () {
+  console.log('app.js load tweets-check')
   $('#mainTweetBody').empty()
   $.getJSON("/tweets", function(result){
     $.each(result, function(i, field){
+      console.log("prepending-check")
       $("body").prepend(createTweetElement(field));
     });
   });
@@ -103,10 +89,11 @@ $("#nav-bar button").on('click', function() {
 loadTweets()
 
 
-var $tweet = createTweetElement(tweetData);
+
+
 
 // Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
+ // to see what it looks like
 
 
 

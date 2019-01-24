@@ -1,8 +1,5 @@
-var hello = 'what'
-
-
 $(document).ready(function() {
-  console.log(hello)
+
 
 
 $("form textarea").on('keyup', function() {
