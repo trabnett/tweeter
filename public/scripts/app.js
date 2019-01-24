@@ -11,7 +11,6 @@ $(document).ready(function() {
     return div.innerHTML;
   }
 
-
   function createTweetElement(data) {
     $('#mainTweetBody').prepend(`
       <section class="tweet">
@@ -27,7 +26,6 @@ $(document).ready(function() {
       </section>`)
       let $tweet = $('<article>').addClass('tweet');
   };
-
 
   $( "form" ).submit(function( event ) {
     $('.noChar').hide()
@@ -57,11 +55,9 @@ $(document).ready(function() {
 
 
   function loadTweets () {
-    console.log('app.js load tweets-check')
     $('#mainTweetBody').empty()
     $.getJSON("/tweets", function(result){
       $.each(result, function(i, field){
-        console.log("prepending-check")
         $("body").prepend(createTweetElement(field));
       });
     });
