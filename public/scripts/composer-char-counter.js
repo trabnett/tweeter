@@ -8,7 +8,7 @@ $("form textarea").on('keyup', function() {
   if (charactersLeft < 0) {
     $(this).siblings(".counter").text(charactersLeft).css('color', 'red');
   } else {
-      $(this).siblings(".counter").text(charactersLeft).css('color', 'black');
+    $(this).siblings(".counter").text(charactersLeft).css('color', 'black');
   }
 });
 

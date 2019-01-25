@@ -11,8 +11,8 @@ module.exports = function(DataHelpers) {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
-        let obj = JSON.stringify()
-        console.log("parsed tweets", tweets)
+        let obj = JSON.stringify();
+        console.log("parsed tweets", tweets);
         res.json(tweets);
       }
     });
