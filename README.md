@@ -5,9 +5,8 @@ Tweeter is a simple, single-page Twitter clone.
 This is a project for Lighthouse lab students to build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
 
 Pictures:
-![Loadup](https://github.com/trabnett/tweeter/blob/master/Pics/Tweeter%20-%20Tim%20Rabnett%201.png)
-![New Tweet Button](https://github.com/trabnett/tweeter/blob/master/Pics/Tweeter%20-%20Tim%20Rabnett%202.png)
-![Error after long tweet](https://github.com/trabnett/tweeter/blob/master/Pics/Tweeter%20-%20Tim%20Rabnett%203.png)
+![New Tweet](https://github.com/trabnett/tweeter/blob/master/Pics/Tweeter-Tim%20Rabnett-New%20Tweet.png)
+![Warning](https://github.com/trabnett/tweeter/blob/master/Pics/Tweeter-Tim%20Rabnett-Warning.png)
 
 ## Dependencies
 
