@@ -1,8 +1,9 @@
+
 $(document).ready(function() {
 
+// character counter for new tweets
 
-
-$("form textarea").on('keyup', function() {
+$('form textarea').on('keyup', function() {
   let currentLength = $(this).val().length;
   let charactersLeft = 140 - currentLength;
   if (charactersLeft < 0) {

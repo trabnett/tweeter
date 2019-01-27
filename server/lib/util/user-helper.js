@@ -1,5 +1,7 @@
 "use strict";
 
+// built-in funcitons to generate new users when a tweet is posted
+
 const Chance = require("chance");
 const chance = new Chance();
 

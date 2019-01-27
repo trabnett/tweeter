@@ -1,26 +1,30 @@
 "use strict";
 
-// Basic express setup:
+// Basic express setup and installation of SASS and bodyParser
 
 const PORT          = 8080;
+const sassMiddleware = require('node-sass-middleware');
 const express       = require("express");
 const bodyParser    = require("body-parser");
+const path          = require('path');
 const app           = express();
 
+app.use(
+  sassMiddleware({
+    src: __dirname +  '/scss',
+    dest: __dirname + '/public/styles',
+    debug: true,
+    outputStyle: 'expanded',
+    prefix: '/styles'
+  })
+);
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
-const {MongoClient} = require("mongodb");
-const MONGODB_URI = "mongodb://localhost:27017/tweeter";
+const {MongoClient} = require('mongodb');
+const MONGODB_URI = 'mongodb://localhost:27017/tweeter';
 
 
-// The `data-helpers` module provides an interface to the database of tweets.
-// This simple interface layer has a big benefit: we could switch out the
-// actual database it uses and see little to no changes elsewhere in the code
-// (hint hint).
-//
-// Because it exports a function that expects the `db` as a parameter, we can
-// require it and pass the `db` parameter immediately:
-// Const db = require('mongodb').db
+// Set-up of Mongodb, which is the main data storrage for this project
 
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
@@ -28,21 +32,13 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
     throw err;
   }
   console.log(`Connected to mongodb: ${MONGODB_URI}`);
-  const DataHelpers = require("./lib/data-helpers.js")(db);
-  const tweetsRoutes = require("./routes/tweets")(DataHelpers);
-  app.use("/tweets", tweetsRoutes);
+  const DataHelpers = require('./lib/data-helpers.js')(db);
+  const tweetsRoutes = require('./routes/tweets')(DataHelpers);
+  app.use('/tweets', tweetsRoutes);
 });
 
 
-// The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
-// so it can define routes that use it to interact with the data layer.
-
-// conect the app to the Mongodb service
-
-
-
-// Mount the tweets routes at the "/tweets" path prefix:
 
 app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
+  console.log('Example app listening on port ' + PORT);
 });
